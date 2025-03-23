@@ -1,0 +1,126 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #222;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6600;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+.navbar a.active {
+    border-bottom: 2px solid #ff6600;
+}
+.menu {
+    display: none;
+    font-size: 35px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Section Home */
+.home {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+.home .content h1 {
+    color: #ff6600;
+}
+.home .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ff6600;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.image img {
+    width: 200px;
+    border-radius: 50%;
+}
+
+/* Sections */
+section {
+    padding: 50px 20px;
+}
+.services-container {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+}
+.service {
+    width: 30%;
+    padding: 20px;
+    background: #333;
+    border-radius: 5px;
+}
+.service i {
+    font-size: 48px;
+    color: #ff6600;
+}
+#contact .social-icons i {
+    font-size: 24px;
+    margin: 10px;
+    color: #ff6600;
+}
+
+/* Bouton scroll */
+#scrollUp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    display: none;
+}
+#scrollUp:hover {
+    background: #ff4500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+        flex-direction: column;
+    }
+    .menu {
+        display: block;
+    }
+    .services-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .service {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+}
