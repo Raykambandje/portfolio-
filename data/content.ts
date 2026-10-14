@@ -71,8 +71,7 @@ export const projects: Project[] = [
     description:
       "Planification, gestion et suivi des activités pédagogiques d'un établissement universitaire (projet de TFC). Refonte d'un système PHP/MySQL : sécurisation, nouveau schéma de planification, architecture Repository / Service / Controller et contrôle d'accès à 8 rôles.",
     chips: ["PHP", "MySQL", "RBAC", "Repository / Service", "Planification"],
-    // TODO : remplace # par le lien réel
-    link: { label: "Voir le projet", href: "#" },
+    link: { label: "Voir le projet", href: "https://campus-flow-amber-nu.vercel.app" },
   },
 ];
 
