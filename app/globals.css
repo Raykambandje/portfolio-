@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* Palette sobre : neutres + une seule couleur d'accent */
+@theme {
+  --color-paper: #fafaf9;
+  --color-surface: #ffffff;
+  --color-ink: #0c0a09;
+  --color-muted: #57534e;
+  --color-subtle: #a8a29e;
+  --color-line: #e7e5e4;
+  --color-accent: #2b4acb;
+
+  --font-display: "Inter Tight Variable", "Inter Variable", system-ui, sans-serif;
+  --font-body: "Inter Variable", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --shadow-card: 0 1px 2px rgb(12 10 9 / 0.04), 0 12px 32px -12px rgb(12 10 9 / 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-feature-settings: "cv11", "ss01";
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
