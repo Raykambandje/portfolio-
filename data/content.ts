@@ -5,12 +5,11 @@ export const profile = {
   lastName: "Kambandje",
   role: "Développeur full-stack",
   company: "JOSAR Technology & Industry",
-  // TODO : remplace par ton adresse e-mail
-  email: "ton.email@exemple.com",
+  email: "raykambandje007@gmail.com",
   socials: [
     { label: "GitHub", href: "https://github.com/Raykambandje" },
-    // TODO : remplace par tes liens
-    { label: "LinkedIn", href: "#" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/ray-kambandje" },
+    // TODO : remplace par ton lien WhatsApp (ex. https://wa.me/243XXXXXXXXX)
     { label: "WhatsApp", href: "#" },
   ],
 };
