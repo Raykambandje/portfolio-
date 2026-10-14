@@ -31,7 +31,7 @@ function Card({
   last: boolean;
 }) {
   const scale = useTransform(progress, range, [1, targetScale]);
-  const external = project.link.href.startsWith("http");
+  const external = project.link?.href.startsWith("http");
 
   // Inclinaison 3D + reflet qui suit la souris
   const px = useMotionValue(0.5);
@@ -85,20 +85,22 @@ function Card({
           ))}
         </ul>
 
-        <a
-          href={project.link.href}
-          target={external ? "_blank" : undefined}
-          rel="noopener"
-          className="group inline-flex shrink-0 items-center gap-2 text-sm font-medium"
-        >
-          <span className="relative">
-            {project.link.label}
-            <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-ink transition-transform duration-300 group-hover:scale-x-100" />
-          </span>
-          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-line transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
-            <span className="transition-transform duration-300 group-hover:-rotate-45">→</span>
-          </span>
-        </a>
+        {project.link && (
+          <a
+            href={project.link.href}
+            target={external ? "_blank" : undefined}
+            rel="noopener"
+            className="group inline-flex shrink-0 items-center gap-2 text-sm font-medium"
+          >
+            <span className="relative">
+              {project.link.label}
+              <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-ink transition-transform duration-300 group-hover:scale-x-100" />
+            </span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-full border border-line transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
+              <span className="transition-transform duration-300 group-hover:-rotate-45">→</span>
+            </span>
+          </a>
+        )}
       </div>
     </motion.article>
   );

@@ -41,7 +41,8 @@ export type Project = {
   title: string;
   description: string;
   chips: string[];
-  link: { label: string; href: string };
+  // Facultatif : sans lien, la carte n'affiche pas de bouton
+  link?: { label: string; href: string };
 };
 
 export const projects: Project[] = [
@@ -52,8 +53,6 @@ export const projects: Project[] = [
     description:
       "Service VTC pensé pour le marché congolais. J'ai mis en place la vérification des utilisateurs par code OTP envoyé par SMS et je prépare l'intégration du paiement Mobile Money via l'API FlexPay, avec compte marchand dédié.",
     chips: ["OTP SMS · EngageLab", "FlexPay", "Mobile Money", "API REST"],
-    // TODO : remplace # par le lien réel
-    link: { label: "Voir le projet", href: "#" },
   },
   {
     index: "02",
