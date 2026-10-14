@@ -9,8 +9,6 @@ export const profile = {
   socials: [
     { label: "GitHub", href: "https://github.com/Raykambandje" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/ray-kambandje" },
-    // TODO : remplace par ton lien WhatsApp (ex. https://wa.me/243XXXXXXXXX)
-    { label: "WhatsApp", href: "#" },
   ],
 };
 

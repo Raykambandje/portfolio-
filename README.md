@@ -35,13 +35,9 @@ data/
 public/            # images (photo.jpg, captures de projets…)
 ```
 
-## À compléter avant la mise en ligne
+## Modifier le contenu
 
-Tout se passe dans `data/content.ts` (cherche `TODO`) :
-
-- ton adresse e-mail
-- tes liens LinkedIn et WhatsApp
-- les liens « Voir le projet » de Madebocar et de la plateforme pédagogique
+Tout le texte, les liens et les projets sont dans `data/content.ts`. Le lien d'un projet est facultatif : sans `link`, la carte n'affiche pas de bouton.
 
 Pour ta photo : place-la dans `public/photo.jpg` et décommente la balise `<img>` dans `components/About.tsx`.
 
