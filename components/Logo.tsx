@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
+import { LOGO_BOWL as BOWL, LOGO_LEG as LEG } from "@/lib/logo";
 
 // Monogramme « R » : traits arrondis + petit curseur bleu (clin d'œil au code)
-const BOWL = "M32 74V26h20a13 13 0 0 1 0 26H32";
-const LEG = "M49 52l15 22";
 
 export function LogoMark({
   className = "",

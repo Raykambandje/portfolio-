@@ -6,6 +6,8 @@ export const profile = {
   role: "Développeur full-stack",
   company: "JOSAR Technology & Industry",
   email: "raykambandje007@gmail.com",
+  // Adresse publique du site (aperçus de liens, Google) : à changer si tu prends un nom de domaine
+  url: "https://portfolio-six-kappa-kw1ownl6ug.vercel.app",
   socials: [
     { label: "GitHub", href: "https://github.com/Raykambandje" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/ray-kambandje" },

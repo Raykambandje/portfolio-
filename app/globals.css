@@ -42,6 +42,11 @@ body {
   border-radius: 4px;
 }
 
+/* Intro déjà vue dans la session (voir lib/intro.ts) */
+html[data-intro="skip"] [data-intro-screen] {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }

@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { profile } from "@/data/content";
 import { LogoMark } from "./Logo";
 import RollText from "./RollText";
-import { INTRO_DURATION } from "@/lib/intro";
+import { introDelay } from "@/lib/intro";
 
 const links = [
   { href: "#apropos", label: "À propos" },
@@ -20,7 +20,7 @@ export default function Nav() {
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
-  const [delayIn, setDelayIn] = useState(INTRO_DURATION);
+  const [delayIn, setDelayIn] = useState(introDelay);
 
   // Cache la barre quand on descend, la réaffiche quand on remonte
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -29,6 +29,20 @@ export default function Nav() {
     setScrolled(latest > 10);
     if (delayIn) setDelayIn(0);
   });
+
+  // Section au milieu de l'écran, pour signaler le lien correspondant
+  const [active, setActive] = useState("");
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(`#${e.target.id}`)),
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    ["#top", ...links.map((l) => l.href), "#contact"].forEach((href) => {
+      const el = document.querySelector(href);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <motion.header
@@ -53,8 +67,19 @@ export default function Nav() {
           <ul className="hidden items-center gap-8 text-sm md:flex">
             {links.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="group text-muted transition-colors hover:text-ink">
+                <a
+                  href={l.href}
+                  aria-current={active === l.href ? "true" : undefined}
+                  className={`group relative transition-colors hover:text-ink ${active === l.href ? "text-ink" : "text-muted"}`}
+                >
                   <RollText>{l.label}</RollText>
+                  {active === l.href && (
+                    <motion.span
+                      layoutId="nav-actif"
+                      transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                      className="absolute -bottom-2 left-1/2 -ml-0.5 h-1 w-1 rounded-full bg-accent"
+                    />
+                  )}
                 </a>
               </li>
             ))}

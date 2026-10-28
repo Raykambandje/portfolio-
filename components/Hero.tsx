@@ -14,7 +14,7 @@ import SplitText from "./SplitText";
 import Magnetic from "./Magnetic";
 import RollText from "./RollText";
 import { heroWords, profile } from "@/data/content";
-import { INTRO_DURATION as D } from "@/lib/intro";
+import { introDelay } from "@/lib/intro";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -27,6 +27,7 @@ const meta = [
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const [word, setWord] = useState(0);
+  const D = introDelay();
 
   // Parallaxe à la sortie de l'écran
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });

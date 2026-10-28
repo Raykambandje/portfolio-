@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { animate, AnimatePresence, motion } from "motion/react";
 import { useLenis } from "lenis/react";
 import { LogoMark } from "./Logo";
-import { INTRO_DURATION } from "@/lib/intro";
+import { INTRO_DURATION, INTRO_SEEN_KEY, introSkipped } from "@/lib/intro";
 import { profile } from "@/data/content";
 
 const ease = [0.76, 0, 0.24, 1] as const;
@@ -27,6 +27,10 @@ export default function Intro() {
   }, [done, lenis]);
 
   useEffect(() => {
+    if (introSkipped()) {
+      setDone(true);
+      return;
+    }
     const controls = animate(0, 100, {
       duration: INTRO_DURATION - 0.6,
       ease: [0.65, 0, 0.35, 1],
@@ -36,11 +40,20 @@ export default function Intro() {
     return () => controls.stop();
   }, []);
 
+  // Une fois le rideau levé, l'intro est sautée jusqu'à la fin de la session
+  const markSeen = () => {
+    document.documentElement.dataset.intro = "skip";
+    try {
+      sessionStorage.setItem(INTRO_SEEN_KEY, "1");
+    } catch {}
+  };
+
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={markSeen}>
       {!done && (
         <motion.div
           aria-hidden
+          data-intro-screen
           exit={{ y: "-100%" }}
           transition={{ duration: 0.8, ease }}
           className="fixed inset-0 z-[100] flex flex-col bg-ink p-6 text-white sm:p-10"

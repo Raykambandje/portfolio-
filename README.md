@@ -17,21 +17,29 @@ Node.js 20 ou plus est requis.
 ```
 app/
   layout.tsx       # polices, métadonnées SEO
-  page.tsx         # assemblage des sections
+  page.tsx         # assemblage des sections + fiche Google (JSON-LD)
   globals.css      # couleurs et polices (bloc @theme)
+  opengraph-image.tsx  # image d'aperçu quand on partage le lien (WhatsApp, LinkedIn…)
+  not-found.tsx    # page 404
+  sitemap.ts, robots.ts  # pour les moteurs de recherche
 components/
+  Intro.tsx        # écran d'intro (une fois par session)
   Hero.tsx         # titre révélé mot par mot, phrase dynamique, grille de fond
   Marquee.tsx      # bandeau de technologies qui défile
   About.tsx        # phrase qui s'éclaircit au scroll, compteurs animés
   Projects.tsx     # cartes empilées « collantes »
   Stack.tsx        # compétences avec apparition progressive
   Timeline.tsx     # ligne qui se dessine au scroll
+  Certifications.tsx  # badges avec lien de vérification
   Contact.tsx      # contact + bouton « copier l'adresse » + footer
-  Nav.tsx          # barre qui se cache en descendant, menu mobile animé
+  Nav.tsx          # barre qui se cache en descendant, section active, menu mobile animé
   Section.tsx      # mise en page des sections (étiquette à gauche, contenu à droite)
-  ScrollProgress.tsx, SplitText.tsx, Magnetic.tsx
+  Logo.tsx         # monogramme « R » (animé dans l'intro)
+  ScrollProgress.tsx, SplitText.tsx, Magnetic.tsx, RollText.tsx
 data/
-  content.ts       # ✏️ TOUT le texte du site est ici
+  content.ts       # ✏️ TOUT le texte du site est ici (et l'adresse du site)
+lib/
+  intro.ts         # durée de l'intro et règle « une fois par session »
 public/            # images (photo.jpg, captures de projets…)
 ```
 
@@ -45,7 +53,9 @@ Les couleurs se changent dans le bloc `@theme` de `app/globals.css` : des neutre
 
 ## Accessibilité
 
-Les animations respectent le réglage système « réduire les animations » : le bandeau s'arrête et les transitions deviennent instantanées.
+Les animations respectent le réglage système « réduire les animations » : l'intro est sautée, le bandeau s'arrête et les transitions deviennent instantanées. Les titres animés restent lisibles par les lecteurs d'écran.
+
+Si tu prends un nom de domaine, change `url` dans `data/content.ts` : l'aperçu des liens, le sitemap et Google l'utilisent.
 
 ## Déployer sur Vercel
 

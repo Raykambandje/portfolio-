@@ -30,12 +30,13 @@ export default function SplitText({
 
   return (
     <motion.span
-      aria-label={text}
       className={`block ${className}`}
       initial="hidden"
       {...trigger}
       transition={{ staggerChildren: stagger, delayChildren: delay }}
     >
+      {/* Texte lu par les lecteurs d'écran ; les mots animés leur sont masqués */}
+      <span className="sr-only">{text}</span>
       {words.map((w, i) => (
         <span key={i} aria-hidden className="inline-block overflow-hidden pb-[0.1em] align-top">
           <motion.span className="inline-block" variants={word}>
